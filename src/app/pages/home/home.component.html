@@ -1,0 +1,29 @@
+<div class="app-home" fxLayout="column">
+  <img [src]="backgroundImagePath" alt="Movies poster" class="app-home-background-image">
+
+  <div class="app-home-wrapper" fxLayout="column" fxLayoutAlign="center center">
+    <h1 class="app-home-wrapper-title">Movies Search Engine</h1>
+
+    <form [formGroup]="searchForm" class="app-home-wrapper-form" fxLayout="row" fxLayoutAlign="center">
+      <mat-form-field>
+        <input type="text"
+               placeholder="Search"
+               matInput
+               formControlName="movie">
+        <!-- <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete> -->
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="search()">Search</button>
+    </form>
+
+    <div *ngIf="movies$ | async" class="content">
+      <p> {{ (movies$ | async).total_results }}</p>
+
+      <app-movie-card *ngFor="let movie of (movies$ | async).results" [movie]="movie"></app-movie-card>
+    </div>
+  </div>
+</div>

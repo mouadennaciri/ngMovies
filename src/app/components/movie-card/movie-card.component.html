@@ -1,0 +1,10 @@
+<mat-card fxLayout="row">
+  <img mat-card-image [src]="movie.poster_path" alt="Movie poster">
+  <mat-card-content>
+    <h2>{{ movie.title }}</h2>
+
+    <div>
+      <p>{{ movie.overview }}</p>
+    </div>
+  </mat-card-content>
+</mat-card>
